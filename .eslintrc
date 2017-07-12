@@ -5,5 +5,8 @@
   ],
   "rules": {
     "react/jsx-filename-extension": 0
+  },
+  "globals": {
+    "document": false
   }
 }

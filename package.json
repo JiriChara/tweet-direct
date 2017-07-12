@@ -4,9 +4,12 @@
   "private": true,
   "dependencies": {
     "axios": "^0.16.2",
+    "bulma": "^0.4.3",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
-    "react-scripts": "1.0.10"
+    "react-router-dom": "^4.1.1",
+    "react-scripts": "1.0.10",
+    "redux": "^3.7.1"
   },
   "scripts": {
     "start": "react-scripts start",
