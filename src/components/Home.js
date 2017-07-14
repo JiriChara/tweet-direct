@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import { fetchList, fetchListStart, fetchListSuccess, fetchListError } from '../store/persons';
+import Person from './persons/ListItem';
 
 const mapStateToProps = state => ({
   persons: state.persons,
@@ -24,6 +25,10 @@ class Home extends Component {
   }
 
   render() {
+    const personList = this.props.persons.data.map(person => (
+      <Person key={person.id} person={person} />
+    ));
+
     return (
       <main>
         <section className="hero is-primary">
@@ -38,7 +43,9 @@ class Home extends Component {
 
         <section className="section">
           <div className="container">
-            <p>{ JSON.stringify(this.props.persons) }</p>
+            <ul>
+              { personList }
+            </ul>
           </div>
         </section>
       </main>

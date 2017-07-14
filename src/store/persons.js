@@ -9,6 +9,7 @@ const FETCH_LIST_ERROR = 'tweet-direct/persons/FETCH_LIST_ERROR';
 
 const initialState = {
   loaded: false,
+  data: [],
 };
 
 export default (state = initialState, action = {}) => {
