@@ -1,6 +1,11 @@
-const FETCH_SINGLE_START = 'tweet-direct/persons/FETCH_SINGLE';
-const FETCH_SINGLE_SUCCESS = 'tweet-direct/persons/FETCH_SINGLE_SUCCESS';
-const FETCH_SINGLE_ERROR = 'tweet-direct/persons/FETCH_SINGLE_ERROR';
+import client from '../utils/client';
+import parseList from '../utils/parseList';
+
+const RESOURCE = 'persons';
+
+const FETCH_LIST_START = 'tweet-direct/persons/FETCH_LIST_START';
+const FETCH_LIST_SUCCESS = 'tweet-direct/persons/FETCH_LIST_SUCCESS';
+const FETCH_LIST_ERROR = 'tweet-direct/persons/FETCH_LIST_ERROR';
 
 const initialState = {
   loaded: false,
@@ -8,17 +13,17 @@ const initialState = {
 
 export default (state = initialState, action = {}) => {
   switch (action.type) {
-    case FETCH_SINGLE_START:
+    case FETCH_LIST_START:
       return {
         ...state,
         loading: true,
       };
-    case FETCH_SINGLE_SUCCESS:
+    case FETCH_LIST_SUCCESS:
       return {
         ...state,
         loading: false,
         loaded: true,
-        data: action.result,
+        data: action.data,
         error: null,
       };
     default:
@@ -26,7 +31,25 @@ export default (state = initialState, action = {}) => {
   }
 };
 
-export const fetchSingle = () => ({
-  types: [FETCH_SINGLE_START, FETCH_SINGLE_SUCCESS, FETCH_SINGLE_ERROR],
-  promise: client => client.get('/api/persons'),
+export const fetchListStart = () => ({
+  type: FETCH_LIST_START,
 });
+
+export const fetchListSuccess = ({ data, headers }) => {
+  const { list, pagination, links } = parseList(data, RESOURCE);
+
+  return {
+    type: FETCH_LIST_SUCCESS,
+    data: list,
+    pagination,
+    links,
+    headers,
+  };
+};
+
+export const fetchListError = error => ({
+  type: FETCH_LIST_ERROR,
+  error,
+});
+
+export const fetchList = () => client.get('/api/persons');

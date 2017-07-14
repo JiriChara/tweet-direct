@@ -14,6 +14,7 @@ import About from './components/About';
 import Footer from './components/Footer';
 import './App.css';
 import logo from './assets/images/logo.png';
+import persons from './store/persons';
 
 const history = createHistory();
 const middleware = routerMiddleware(history);
@@ -21,6 +22,7 @@ const middleware = routerMiddleware(history);
 const store = createStore(
   combineReducers({
     route: routerReducer,
+    persons,
   }),
 
   composeWithDevTools(
