@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "axios": "^0.16.2",
+    "babel-plugin-transform-es2015-modules-amd": "^6.24.1",
     "bulma": "^0.4.3",
     "history": "^4.6.3",
     "prop-types": "^15.5.10",
