@@ -12,6 +12,7 @@ import createHistory from 'history/createBrowserHistory';
 
 import Home from './components/Home';
 import About from './components/About';
+import Foo from './components/Foo';
 import Footer from './components/Footer';
 import './App.css';
 import logo from './assets/images/logo.png';
@@ -52,6 +53,10 @@ export default () => (
                 <Link className="navbar-item" to="/about">
                   About
                 </Link>
+
+                <Link className="navbar-item" to="/foo">
+                  Foo
+                </Link>
               </div>
             </div>
           </nav>
@@ -59,6 +64,7 @@ export default () => (
 
         <Route exact path="/" component={Home} />
         <Route path="/about" component={About} />
+        <Route path="/foo/:id" component={Foo} />
 
         <Footer />
       </div>
