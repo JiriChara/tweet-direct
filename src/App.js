@@ -14,6 +14,7 @@ import Home from './components/Home';
 import About from './components/About';
 import Foo from './components/Foo';
 import Footer from './components/Footer';
+import Persons from './components/Persons';
 import './App.css';
 import logo from './assets/images/logo.png';
 import persons from './store/persons';
@@ -64,6 +65,7 @@ export default () => (
 
         <Route exact path="/" component={Home} />
         <Route path="/about" component={About} />
+        <Route path="/persons" component={Persons} />
         <Route path="/foo/:id" component={Foo} />
 
         <Footer />

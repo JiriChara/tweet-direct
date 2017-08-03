@@ -1,12 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Person = ({ firstName }) => (
-  <b>{ firstName }</b>
+const Person = ({ person }) => (
+  <div>
+    <b>{ `${person.firstName} ${person.lastName}` }</b>
+  </div>
 );
 
 Person.propTypes = {
-  firstName: PropTypes.string.isRequired,
+  person: PropTypes.shape({
+    firstName: PropTypes.string,
+    lastName: PropTypes.string,
+  }).isRequired,
 };
 
 export default Person;
